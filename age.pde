@@ -6,15 +6,15 @@ void setup() {
   rectMode(CORNERS);
   int die = 80;
   float max = sqrt(die);
-  float fuga = -100;
-  for (int i = 0; i<=die; i++) {
-    float hoge = map(sqrt(i), 0, max, 0, height);
-    fill(i-1<=19?128:255);
-    if (i>0)rect(0, fuga, width, hoge);
+  float year_starts = 0;
+  for (int i = 0; i<die; i++) {
+    float year_ends = map(sqrt(i+1), 0, max, 0, height);
+    fill(i<=19?128:255);
+    rect(0, year_starts, width, year_ends);
 
     fill(0);
-    textSize(constrain(hoge-fuga, 0, 30));
-    text(""+(i-1)+"歳", 0, fuga);
-    fuga = hoge;
+    textSize(constrain(year_ends-year_starts, 0, 30));
+    text(""+i+"歳", 0, year_starts);
+    year_starts = year_ends;
   }
 }
